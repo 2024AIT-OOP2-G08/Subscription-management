@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>ADD</h1>
-    <p>ここに入力フォームを追加</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>サブスク登録</title>
+  </head>
+  <body>
+    <h1>サブスク登録</h1>
+    <form action="" method="post">
+      <!-- サービス名入力欄 -->
+      <label>サービス名:
+        <input type="text" name="name" required />
+      </label>
+      <br />
+      <label>値段:
+        <input type="number" name="price" required />
+      </label>
+      <br />
+      <label>登録日:
+        <input type="date" name="entry" required />
+      </label>
+      <br />
+      <label>支払日:
+        <input type="date" name="payment_date" required />
+      </label>
+      <br />
+      <button type="submit">追加</button>
+    </form>
+  </body>
 </html>
