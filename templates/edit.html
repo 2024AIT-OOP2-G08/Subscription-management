@@ -1,12 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>編集ページ</title>
 </head>
 <body>
     <h1>EDIT</h1>
-    <p>ここに編集フォームを追加</p>
+    <ul class="breadcrumb">
+        <li><a href="{{ url_for('index')}}">HOME</a></li>
+        <li>Edit</li>
+    </ul>
+    <form action="/edit/{{ content.id }}" method="post">
+        <label for="name">名前:</label>
+        <select id="name" name="name" required>
+            <option value="{{ content.name }}" selected>{{ content.name }}</option>
+            {% for name in names %}
+                <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="price">値段:</label>
+        <select id="price" name="price" required>
+            <option value="{{ content.price }}" selected>{{ content.price }}</option>
+            {% for price in prices %}
+                <option value="{{ price }}">{{ price }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="entry">入った日:</label>
+        <select id="entry" name="entry" required>
+            <option value="{{ content.entry }}" selected>{{ content.entry }}</option>
+            {% for entry in entries %}
+                <option value="{{ entry }}">{{ entry }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="payment_date">支払い日:</label>
+        <select id="payment_date" name="payment_date" required>
+            <option value="{{ content.payment_date }}" selected>{{ content.payment_date }}</option>
+            {% for payment_date in payment_dates %}
+                <option value="{{ payment_date }}">{{ payment_date }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">更新</button>
+    </form>
 </body>
 </html>
