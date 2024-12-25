@@ -1,0 +1,22 @@
+#graphs-container {
+  display: flex; /* 横並び配置 */
+  justify-content: space-between; /* 左右に配置 */
+  align-items: flex-start; /* 上揃え */
+  gap: 20px; /* グラフ間の余白 */
+  width: 100%; /* コンテナの幅 */
+}
+
+#totalchart-container {
+  flex: 0 0 50%; /*　左側半分を使う　*/
+  text-align: center;
+}
+
+#individual-container {
+  flex: 0 0 50%; /*　右側半分を使う　*/
+  text-align: center;
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
