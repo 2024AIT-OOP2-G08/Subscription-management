@@ -1,5 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
+  //contents_dictが受け取れているか確認する
+  console.log("Window contents_dict:", window.contents_dict);
+  if (!window.contents_dict) {
+    console.error("contents_dictが定義されていません");
+    return;
+  }
+  
+  //contents_dictを取得
+  const contents_dict = window.contents_dict;
+  // console.log("\ncontents_dict\n")
+  // console.log(contents_dict);
 
+  //contents_dictのnameとpriceを取得し、labelsとpricesに格納
+  const labels = contents_dict.map(content => content.name);
+  const prices = contents_dict.map(content => content.price);
+  // console.log(labels);
+  // console.log(prices);
   // 円グラフ
   var ctxDoughnut = document.getElementById("totalchart").getContext("2d");
 
@@ -35,12 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   var myDoughnutChart = new Chart(ctxDoughnut, {
     type: 'doughnut',
-    //dataは仮データです
     data: {
-      labels: ["YouTubePremium", "Netflix", "AmazonPrime", "DisneyPlus"],
+      labels: labels,
       datasets: [{
         backgroundColor: ["#c97586", "#bbbcde", "#93b881", "#e6b422"],
-        data: [1280, 1590, 600, 990]
+        data: prices
       }]
     },
     options: {
@@ -63,11 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
   var myBarChart = new Chart(ctxBar, {
     type: 'bar',
     data: {
-      // data仮データです
-      labels: ["YouTubePremium", "Netflix", "AmazonPrime", "DisneyPlus"],
+      labels: labels,
       datasets: [{
         backgroundColor: ["#c97586", "#bbbcde", "#93b881", "#e6b422"],
-        data: [1280, 1590, 600, 990]
+        data: prices
       }]
     },
     options: {
