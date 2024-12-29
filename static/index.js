@@ -14,6 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //contents_dictのnameとpriceを取得し、labelsとpricesに格納
   const labels = contents_dict.map(content => content.name);
   const prices = contents_dict.map(content => content.price);
+  var sum = 0;
+  for (const price of prices) {
+    sum += price;
+  }
+  console.log(sum);
   // console.log(labels);
   // console.log(prices);
   // 円グラフ
@@ -34,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const lines = [
             { text: '合計', fontSize: 20 },
-            { text: '¥〜', fontSize: 32 } 
+            { text: `¥${sum}`, fontSize: 32 } 
         ];
         const lineHeight = 40; // 各行の間隔
 
