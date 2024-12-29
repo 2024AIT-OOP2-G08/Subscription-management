@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>編集ページ</title>
 </head>
 <body>
-    <h1>EDIT</h1>
-    <p>ここに編集フォームを追加</p>
+    <h1>編集ページ</h1>
+    <ul class="breadcrumb">
+        <li><a href="{{ url_for('index') }}">HOME</a></li>
+        <li>編集</li>
+    </ul>
+
+    <form action="{{ url_for('edit.edit', id=content.id) }}" method="post">
+        <label>名前:
+            <input type="text" name="name" value="{{ content.name }}" required>
+        </label><br>
+        <label>値段:
+            <input type="number" step="1" name="price" value="{{ content.price }}" required>
+        </label><br>
+        <label>入った日: 
+            <input type="date" name="entry" value="{{ content.entry }}" required>
+        </label><br>
+        <label>支払い日: 
+            <input type="date" name="payment_date" value="{{ content.payment_date }}" required>
+        </label><br>
+        <button type="submit">保存</button>
+    </form>
 </body>
 </html>
