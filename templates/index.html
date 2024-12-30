@@ -25,7 +25,11 @@
             <canvas id="individualchart" width="600" height="600" ></canvas>
         </div>
     </div>
-    
+    <script>
+        <!--index.htmlからindex.jsにcontents_dictとして渡す-->
+        window.contents_dict = {{ contents_dict|tojson|safe }};
+        console.log("Contents dict initialized:", window.contents_dict);
+    </script>
     <script src="static/index.js"></script>
 </body>
 </html>
