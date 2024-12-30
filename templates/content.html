@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>CONTENT</h1>
-    <p>ここに個別の内容を表示</p>
-    <p>サブスク名</p>
-    <p>値段</p>
-    <p>登録日</p>
-    <p>継続日数</p>
+    <p>サブスク名: {{ content.name }}</p>
+    <p>値段: {{ content.price }}</p>
+    <p>登録日: {{ content.entry.strftime('%Y/%m/%d') }}</p>
+    <p>継続日数: {{ content.payment_date.strftime('%Y/%m/%d') }}</p>
     <p></p>
-</body>
+  </body>
+  <body>
+    <a href="edit">編集</a>
+    <a href="delete">削除</a>
+  </body>
 </html>
