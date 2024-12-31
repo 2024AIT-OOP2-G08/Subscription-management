@@ -14,7 +14,7 @@
     <p></p>
   </body>
   <body>
-    <a href="edit">編集</a>
-    <a href="delete">削除</a>
+    <a href="{{ url_for('edit.edit', id=content.id) }}">編集</a>
+    <a href="{{ url_for('delete.delete', id=content.id) }}">削除</a>
   </body>
 </html>
