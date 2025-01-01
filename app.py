@@ -17,9 +17,9 @@ def index():
     contents = Contents.select()
     # contentsを辞書型に変換し、リストに格納
     contents_dict = [model_to_dict(content) for content in contents]
-    # 金額が安い順にソートする
+    # 金額が高い順にソートする
     # reverse=Trueで値段が高い順、Falseで安い順にソート
-    contents_dict.sort(key=lambda x: x['price'], reverse=False)
+    contents_dict.sort(key=lambda x: x['price'], reverse=True)
     # print(contents_dict)
     # index.htmlにcontents_dicとして渡す
     return render_template('index.html', contents_dict=contents_dict)

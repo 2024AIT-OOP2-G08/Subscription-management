@@ -1,18 +1,93 @@
+/* 共通のスタイル */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  background-color: rgb(29, 203, 165);
+  align-items: center;
+}
+
+.title {
+  font-family: monospace;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  text-align: left;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 100px;
+  transition: background-color 0.3s ease; 
+  border-radius: 5px;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+.menu-item:hover {
+  background-color: #0056b3;  /* ホバー時に背景色を暗くする */
+}
+
+#toggle-container {
+  display: flex;
+  justify-content: center;
+  margin: -50px 20px 0;
+}
+
+.toggle-button {
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.toggle-button.active {
+  background-color: #0056b3;
+}
+
 #graphs-container {
-  display: flex; /* 横並び配置 */
-  justify-content: space-between; /* 左右に配置 */
-  align-items: flex-start; /* 上揃え */
-  gap: 20px; /* グラフ間の余白 */
-  width: 100%; /* コンテナの幅 */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
 }
 
 #totalchart-container {
-  flex: 0 0 50%; /*　左側半分を使う　*/
+  flex: 0 0 50%;
   text-align: center;
 }
 
 #individual-container {
-  flex: 0 0 50%; /*　右側半分を使う　*/
+  flex: 0 0 50%;
   text-align: center;
 }
 
