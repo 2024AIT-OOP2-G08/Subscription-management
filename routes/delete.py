@@ -2,9 +2,9 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from models import Contents
 from peewee import DoesNotExist
 
-delete_bp = Blueprint('delete', __name__, url_prefix='/delete')
+delete_bp = Blueprint('delete', __name__)
 
-@delete_bp.route('/<int:id>', methods=['GET', 'POST'])
+@delete_bp.route('/content/delete/<int:id>', methods=['GET', 'POST'])
 def delete(id):
     try:
         # 指定された ID のデータを取得

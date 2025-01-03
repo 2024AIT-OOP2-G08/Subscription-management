@@ -3,9 +3,9 @@ from models import Contents
 from peewee import DoesNotExist
 from datetime import date
 
-edit_bp = Blueprint('edit', __name__, url_prefix='/edit')
+edit_bp = Blueprint('edit', __name__)
 
-@edit_bp.route('/<int:id>', methods=['GET', 'POST'])
+@edit_bp.route('/content/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
     
     content = Contents.get(Contents.id == id)

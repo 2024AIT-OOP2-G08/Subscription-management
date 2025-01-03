@@ -2,23 +2,20 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>削除確認ページ</title>
+    <title>削除ページ</title>
 </head>
 <body>
-    <h1>削除確認ページ</h1>
+    <h1>削除ページ</h1>
     <ul class="breadcrumb">
         <li><a href="{{ url_for('index') }}">HOME</a></li>
         <li>削除確認</li>
     </ul>
 
     <p>以下の内容を削除しますか？</p>
-
-    <ul>
-        <li><strong>名前:</strong> {{ content.name }}</li>
-        <li><strong>値段:</strong> {{ content.price }}</li>
-        <li><strong>入った日:</strong> {{ content.entry }}</li>
-        <li><strong>支払い日:</strong> {{ content.payment_date }}</li>
-    </ul>
+    <p>サブスク名: {{ content.name }}</p>
+    <p>値段: {{ content.price }}</p>
+    <p>登録日: {{ content.entry.strftime('%Y/%m/%d') }}</p>
+    <p>支払日: {{ content.payment_date.strftime('%Y/%m/%d') }}</p>
 
     <form action="{{ url_for('delete.delete', id=content.id) }}" method="post">
         <button type="submit" style="color: red;">削除</button>

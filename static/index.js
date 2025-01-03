@@ -72,7 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
       //クリックした時の処理
       onClick(event, elements) {
         if (elements.length > 0) {
-          window.location.href = "/content"; //一旦全てcontentに飛ばす
+          const index = elements[0].index;
+          const targetId = contents_dict[index].id;
+          window.location.href = `/content/${targetId}`;
         }
       },
     },
