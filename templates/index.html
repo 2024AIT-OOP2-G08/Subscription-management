@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>index</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="static/styles.css" />
-  </head>
-  <body>
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>index</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+    <header>
+        <a href="" class="title">サブスク管理</a>
+        <ul>
+            <li><a href="add" class="menu-item">サブスクの追加</a></li>
+        </ul>
+    </header>
+    
     <h1>TOP</h1>
 
-    <!--デバック用目次は機能が実装出来次第消去します-->
-    <p>デバッグ用目次</p>
-    <a href="edit">編集</a>
-    <a href="add">追加</a>
-    <a href="content">個別の内容</a><br /><br />
+    <div id="toggle-container">
+        <button id="month-button" class="toggle-button">月</button>
+        <button id="year-button" class="toggle-button">年</button>
+    </div>
 
-    <a href="add">サブスクの追加</a>
     <div id="graphs-container">
-      <div id="totalchart-container">
-        <canvas id="totalchart" width="600" height="600"></canvas>
-      </div>
-      <div id="individual-container">
-        <canvas id="individualchart" width="600" height="600"></canvas>
-      </div>
+        <div id="totalchart-container">
+            <canvas id="totalchart" width="600" height="600"></canvas>
+        </div>
+        <div id="individual-container">
+            <canvas id="individualchart" width="600" height="600"></canvas>
+        </div>
     </div>
     <script>
-      <!--index.htmlからindex.jsにcontents_dictとして渡す-->
-      window.contents_dict = {{ contents_dict|tojson|safe }};
-      console.log("Contents dict initialized:", window.contents_dict);
+        <!--index.htmlからindex.jsにcontents_dictとして渡す-->
+        window.contents_dict = {{ contents_dict|tojson|safe }};
+        console.log("Contents dict initialized:", window.contents_dict);
     </script>
     <script src="static/index.js"></script>
-  </body>
+</body>
 </html>
