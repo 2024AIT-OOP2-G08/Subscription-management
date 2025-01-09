@@ -23,8 +23,9 @@
   <body class="inputContainer">
     <h1>サブスク登録</h1>
     <ul class="breadcrumb">
-        <li>サブスク登録</li>
-      </ul>
+      <li class="breadcrumb-item"><a href="{{ url_for('index') }}">HOME</a></li>
+      <li class="breadcrumb-item active">編集</li>
+  </ul>
       <!-- サービス名入力欄 -->
       <form action="{{ url_for('edit.edit', id=content.id) }}" method="post">
         <label for="service" class="form-label">サービス名 </label>
