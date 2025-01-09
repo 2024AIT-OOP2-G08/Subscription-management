@@ -46,7 +46,7 @@ ul {
 }
 
 .menu-item:hover {
-  background-color: #0056b3;  /* ホバー時に背景色を暗くする */
+  background-color: #0056b3;
 }
 
 #toggle-container {
@@ -75,6 +75,16 @@ ul {
 
 .toggle-button.active {
   background-color: #0056b3;
+}
+
+#no-subscription {
+  text-align: center;
+  font-size: 30px;
+  color: gray;
+}
+
+.hidden {
+  display: none;
 }
 
 #graphs-container {
