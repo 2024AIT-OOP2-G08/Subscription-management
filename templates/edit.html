@@ -25,20 +25,40 @@
     <ul class="breadcrumb">
         <li>サブスク登録</li>
       </ul>
+      <!-- サービス名入力欄 -->
       <form action="{{ url_for('edit.edit', id=content.id) }}" method="post">
-        <label class="form-label">サブスク名:
-        <input type="text" name="name" value="{{ content.name }}" required  class="form-control" placeholder="Youtube" >
-        </label><br>
-        <label>値段:
-            <input type="text" step="1" name="price" value="{{ content.price }}" required class="form-control" placeholder="1000">    
-        </label><br>
-        <label>登録日: 
-            <input type="date" name="entry" value="{{ content.entry }}" required class="form-control">
-        </label><br>
-        <label>支払日: 
-            <input type="date" name="payment_date" value="{{ content.payment_date }}" required class="form-control">
-        </label><br>
-        <button type="submit" class="btn btn-primary rounded-pill px-3">保存</button>
+        <label for="service" class="form-label">サービス名 </label>
+        <input type="service" name="name" value="{{ content.name }}"   class="form-control" id="service" placeholder="Amazon Prime" required>
+        <div class="invalid-feedback">
+          サービス名を入力してください
+        </div>
+        <!-- 値段入力欄 -->
+        <div class="col-12">
+          <label for="price" class="form-label">値段 </label>
+            <input type="text" step="1" name="price" value="{{ content.price }}"  class="form-control" id="price" placeholder="600" required>
+            <div class="invalid-feedback">
+              値段を入力してください
+            </div>
+          </div>
+        <!-- 登録日入力欄 -->
+        <div class="col-12">
+          <label for="entry" class="form-label">登録日 </label>
+            <input type="date" name="entry" value="{{ content.entry }}" class="form-control" id="entry" placeholder="20XX-XX-XX" required>
+            <div class="invalid-feedback">
+              登録日を入力してください
+            </div>
+          </div>
+        <!-- 支払日入力欄 --> 
+        <div class="col-12">
+          <label for="payment_date" class="form-label">支払日 </label>
+            <input type="date" name="payment_date" value="{{ content.payment_date }}" class="form-control" id="payment_date" required >
+            <div class="invalid-feedback">
+              支払日を入力してください
+            </div>
+        
+        <br />
+        <!-- 登録ボタン -->
+        <button class="btn btn-primary rounded-pill px-3" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font></button>
 
         <li><a href="{{ url_for('index') }}">トップに戻る</a></li>
     </form>
