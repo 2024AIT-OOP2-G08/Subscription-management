@@ -39,7 +39,8 @@ ul {
   color: #fff;
   text-decoration: none;
   margin-left: 100px;
-  transition: background-color 0.3s ease; 
+  /* トランジションのプロパティをレイアウトに影響しないものだけに */
+  transition: background-color 0.3s ease, transform 0.2s ease; 
   border-radius: 5px;
   -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
   box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
@@ -47,6 +48,7 @@ ul {
 
 .menu-item:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 #toggle-container {
@@ -62,7 +64,8 @@ ul {
   color: #fff;
   margin: 0 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  /* トランジションのプロパティをレイアウトに影響しないものだけに */
+  transition: background-color 0.3s ease, transform 0.2s ease;
   border: none;
   border-radius: 5px;
   -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
@@ -71,6 +74,8 @@ ul {
 
 .toggle-button:hover {
   background-color: #0056b3;
+  /* 視覚的にズレが生じにくいトランスフォームを使用*/
+  transform: scale(1.05);
 }
 
 .toggle-button.active {
@@ -93,21 +98,79 @@ ul {
   align-items: flex-start;
   gap: 20px;
   width: 100%;
+  /* レイアウトシフトを防ぐために固定値を設定 */
+  min-height: 500px;
 }
 
 #totalchart-container {
   flex: 0 0 50%;
   text-align: center;
+  /* スペース調整を固定サイズで指定する */
+  min-height: 300px;
 }
 
 #individual-container {
   flex: 0 0 50%;
   text-align: center;
+  /* スペース調整を固定サイズで指定する */
+  min-height: 300px;
 }
 
 canvas {
   max-width: 100%;
-  max-height: 100%;
+  height: auto;
+}
+
+/* スマホ向けのメディアクエリ（画面幅が768px以下の場合に適用する） */
+@media screen and (max-width: 768px) {
+  /* グラフコンテナを縦並びに変更 */
+  #graphs-container {
+    /* 横並びから縦並びに変更 */
+    flex-direction: column;
+    /* スマホ表示時の余白を追加 */
+    padding: 10px;
+  }
+
+  #totalchart-container,
+  #individual-container {
+    /* フレックスアイテムの伸縮比率を1に設定 */
+    flex: 1;
+    /* 幅を画面の90%にする */
+    width: 90%;
+    /* グラフ間の余白を設定 */
+    margin-bottom: 20px;
+    /* スペース調整を固定サイズで指定する */
+    min-height: 200px;
+  }
+
+  /* キャンバス要素のサイズ調整 */
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ヘッダーのレイアウト調整 */
+  header {
+    /* ヘッダー内の要素を横並びに */
+    flex-direction: row;
+    /* 高さを自動調整 */
+    height: auto;
+    /* 上下の余白を追加 */
+    padding: 10px 0;
+  }
+
+  .title {
+    margin-left: 20px;
+  }
+
+  .menu-item {
+    margin-left: 50px;
+    margin-top: 10px;
+  }
+
+  h1 {
+    margin-left: 20px;
+  }
 }
 
 input { 
