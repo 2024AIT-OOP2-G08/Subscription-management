@@ -98,6 +98,23 @@ document.addEventListener("DOMContentLoaded", () => {
     updateChartData();
   });
 
+  // グラフ共通のオプション設定
+  const chartOptions = {
+    responsive: true,  // ウィンドウサイズに応じて自動でリサイズ
+    maintainAspectRatio: true,  // アスペクト比を保持
+    options: {
+      plugins: {
+        legend: {
+          position: 'bottom',  // 凡例をグラフの下部に配置
+          labels: {
+            boxWidth: 20,     // 凡例の四角形のサイズを小さく
+            padding: 10       // 凡例アイテム間の余白
+          }
+        }
+      }
+    }
+  };
+
   //円グラフ
   const ctxDoughnut = document.getElementById("totalchart").getContext("2d");
   const myDoughnutChart = new Chart(ctxDoughnut, {
@@ -116,8 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     options: {
-      responsive: false,
-      maintainAspectRatio: false,
+      ...chartOptions,        // 共通オプションを展開
       onClick(event, elements) {
         if (elements.length > 0) {
           const index = elements[0].index;
@@ -149,9 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     options: {
+      ...chartOptions,        // 共通オプションを展開
       indexAxis: "y",
-      responsive: false,
-      maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
       },
