@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prices = contents_dict.map((content) => content.price);
 
   let isYearly = false;
+  let displayStatus = prices.map(() => true);
 
   // サブスクがない場合の表示処理
   if (contents_dict.length === 0) {
@@ -30,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //合計計算関数
-  function calculateSum(data) {
-    return data.reduce((sum, price) => sum + price, 0);
+  function calculateSum(data, displayStatus) {
+    return data.reduce((sum, price, index) => displayStatus[index] ? sum + price : sum, 0);
   }
 
   //初期合計
-  let sum = calculateSum(prices);
+  let sum = calculateSum(prices, displayStatus);
 
   //月・年切り替えボタンの要素
   const monthButton = document.getElementById("month-button");
@@ -73,12 +74,17 @@ document.addEventListener("DOMContentLoaded", () => {
   //グラフデータ更新関数
   function updateChartData() {
     const data = isYearly ? prices.map((price) => price * 12) : prices;
-    sum = calculateSum(data); //合計を再計算
+    sum = calculateSum(data, displayStatus); //合計を再計算
     myDoughnutChart.data.datasets[0].data = data;
     myDoughnutChart.update();
 
     myBarChart.data.datasets[0].data = data;
     myBarChart.update();
+  }
+
+  function updateSum() {
+    sum = calculateSum(prices, displayStatus); // 表示状態に基づいて合計を再計算
+    myDoughnutChart.update();
   }
 
   //ボタンのクリック
@@ -120,10 +126,27 @@ document.addEventListener("DOMContentLoaded", () => {
       maintainAspectRatio: false,
       onClick(event, elements) {
         if (elements.length > 0) {
-          const index = elements[0].index;
-          const targetId = contents_dict[index].id;
-          window.location.href = `/content/${targetId}`;
+          const index = elements[0].index; // クリックされたデータポイントのインデックスを取得
+          const targetId = contents_dict[index].id; // contents_dict から該当する ID を取得
+          window.location.href = `/content/${targetId}`; // ID を含む URL に遷移
         }
+      },
+      plugins: {
+        legend: {
+          display: true,
+          onClick: (e, legendItem, legend) => {
+            const index = legendItem.index;
+            displayStatus[index] = !displayStatus[index];
+            legend.chart.toggleDataVisibility(index);
+            updateSum();
+            if (isYearly) {
+              const data = prices.map((price) => price * 12);
+              sum = calculateSum(data, displayStatus);
+              myDoughnutChart.update();
+              myBarChart.update();
+            }
+          },
+        },
       },
     },
     //円グラフのみ合計を表示
@@ -155,7 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
       plugins: {
         legend: { display: false },
       },
-      //クリックした時の処理
       onClick(event, elements) {
         if (elements.length > 0) {
           const index = elements[0].index; // クリックされたデータポイントのインデックスを取得
