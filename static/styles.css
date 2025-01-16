@@ -12,6 +12,10 @@ header {
   align-items: center;
 }
 
+.indexContainer {
+  padding: 42px;
+}
+
 li {
   all: unset;
 }
@@ -54,7 +58,7 @@ ul {
 #toggle-container {
   display: flex;
   justify-content: center;
-  margin: -50px 20px 0;
+  margin-left: 24px;
 }
 
 .toggle-button {
