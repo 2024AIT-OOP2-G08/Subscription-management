@@ -39,5 +39,16 @@
         <button type="submit" class="btn btn-danger">削除</button>
         <a href="{{ url_for('index') }}" class="btn btn-secondary">キャンセル</a>
     </form>
+
+    <script>
+        // 削除ボタンのクリックイベントを監視
+        document.getElementById('deleteButton').addEventListener('click', function(event) {
+            // 確認ダイアログを表示
+            if (!confirm('本当に削除しますか？')) {
+                // ユーザーが「キャンセル」を選んだ場合、フォーム送信を停止
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

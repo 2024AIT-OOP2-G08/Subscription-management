@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -44,7 +44,7 @@
         <!-- 登録日入力欄 -->
         <div class="col-12">
           <label for="entry" class="form-label">登録日 </label>
-            <input type="date" name="entry" value="{{ content.entry }}" class="form-control" id="entry" placeholder="20XX-XX-XX" required>
+            <input type="date" name="entry" value="{{ content.entry.strftime('%Y-%m-%d') }}" class="form-control" id="entry" required>
             <div class="invalid-feedback">
               登録日を入力してください
             </div>
@@ -52,7 +52,7 @@
         <!-- 支払日入力欄 --> 
         <div class="col-12">
           <label for="payment_date" class="form-label">支払日 </label>
-            <input type="date" name="payment_date" value="{{ content.payment_date }}" class="form-control" id="payment_date" required >
+            <input type="date" name="payment_date" value="{{ content.payment_date.strftime('%Y-%m-%d') }}" class="form-control" id="payment_date" required >
             <div class="invalid-feedback">
               支払日を入力してください
             </div>
