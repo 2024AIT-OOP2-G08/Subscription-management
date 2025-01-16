@@ -12,6 +12,10 @@ header {
   align-items: center;
 }
 
+li {
+  all: unset;
+}
+
 .title {
   font-family: monospace;
   font-size: 28px;
@@ -76,6 +80,16 @@ ul {
 
 .toggle-button.active {
   background-color: #0056b3;
+}
+
+#no-subscription {
+  text-align: center;
+  font-size: 30px;
+  color: gray;
+}
+
+.hidden {
+  display: none;
 }
 
 #graphs-container {
@@ -158,3 +172,15 @@ canvas {
     margin-left: 20px;
   }
 }
+
+input { 
+  margin-bottom: 24px;
+}
+
+.inputContainer {
+  /* border: 1px solid red; */
+
+  padding: 6% 32% 0 32%;
+}
+
+

@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>index</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <link rel="stylesheet" href="static/styles.css" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
 </head>
 <body>
     <header>
@@ -15,7 +16,11 @@
         </ul>
     </header>
     
-    <h1>TOP</h1>
+    <h1>TOP    </h1>
+
+    <div id="no-subscription" class="hidden">
+        Not subscription.
+    </div>
 
     <div id="toggle-container">
         <button id="month-button" class="toggle-button">月</button>

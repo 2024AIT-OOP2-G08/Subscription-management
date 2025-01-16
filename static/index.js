@@ -12,6 +12,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isYearly = false;
 
+  // サブスクがない場合の表示処理
+  if (contents_dict.length === 0) {
+    document.getElementById("no-subscription").classList.remove("hidden");
+    document.getElementById("graphs-container").classList.add("hidden");
+    document.getElementById("toggle-container").classList.add("hidden"); 
+    document.getElementById("month-button").classList.add("hidden");
+    document.getElementById("year-button").classList.add("hidden");
+
+    return; // 処理を終了
+  } else {
+    document.getElementById("no-subscription").classList.add("hidden");
+    document.getElementById("graphs-container").classList.remove("hidden");
+    document.getElementById("toggle-container").classList.remove("hidden");
+    document.getElementById("month-button").classList.remove("hidden");
+    document.getElementById("year-button").classList.remove("hidden");
+  }
+
   //合計計算関数
   function calculateSum(data) {
     return data.reduce((sum, price) => sum + price, 0);
@@ -106,7 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
       labels: labels,
       datasets: [
         {
-          backgroundColor: ["#c97586", "#bbbcde", "#93b881", "#e6b422"],
+          backgroundColor: [
+            "#c97586", "#bbbcde", "#93b881", "#e6b422", "#f39c12", "#d35400", "#16a085", "#2980b9", "#8e44ad", "#f1c40f", 
+            "#2ecc71", "#1abc9c", "#3498db", "#9b59b6", "#34495e", "#e74c3c", "#ecf0f1", "#95a5a6", "#f39c12", "#dcdde1", 
+            "#e67e22", "#f5b041", "#f7dc6f", "#f1c40f", "#27ae60", "#2c3e50", "#8e44ad", "#c0392b", "#16a085", "#f39c12"
+          ],
           data: prices,
         },
       ],
@@ -133,8 +154,13 @@ document.addEventListener("DOMContentLoaded", () => {
       labels: labels,
       datasets: [
         {
-          backgroundColor: ["#c97586", "#bbbcde", "#93b881", "#e6b422"],
+          backgroundColor: [
+            "#c97586", "#bbbcde", "#93b881", "#e6b422", "#f39c12", "#d35400", "#16a085", "#2980b9", "#8e44ad", "#f1c40f", 
+            "#2ecc71", "#1abc9c", "#3498db", "#9b59b6", "#34495e", "#e74c3c", "#ecf0f1", "#95a5a6", "#f39c12", "#dcdde1", 
+            "#e67e22", "#f5b041", "#f7dc6f", "#f1c40f", "#27ae60", "#2c3e50", "#8e44ad", "#c0392b", "#16a085", "#f39c12"
+          ],
           data: prices,
+          maxBarThickness: 100,
         },
       ],
     },
