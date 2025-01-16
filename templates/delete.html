@@ -24,8 +24,8 @@
     <h1>削除ページ</h1>
     <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url_for('index') }}">HOME</a></li>
-        <li class="breadcrumb-item"><a href="{{ url_for('content.content', content_id=content.id) }}">詳細</a></li>
-        <li class="breadcrumb-item active">削除確認</li>
+      <li class="breadcrumb-item"><a href="{{ url_for('content.content', content_id=content.id) }}">詳細</a></li>
+      <li class="breadcrumb-item active">編集</li>
     </ul>
 
     <div class="alert alert-warning" role="alert">
@@ -36,20 +36,16 @@
         <p><strong>支払日:</strong> {{ content.payment_date.strftime('%Y/%m/%d') }}</p>
     </div>
 
-    <form action="{{ url_for('delete.delete', id=content.id) }}" method="post">
+    <form action="{{ url_for('delete.delete', id=content.id) }}" method="post" onsubmit="return confirmDelete()">
         <button type="submit" class="btn btn-danger">削除</button>
         <a href="{{ url_for('index') }}" class="btn btn-secondary">キャンセル</a>
     </form>
 
+    <!-- 確認ダイアログ -->
     <script>
-        // 削除ボタンのクリックイベントを監視
-        document.getElementById('deleteButton').addEventListener('click', function(event) {
-            // 確認ダイアログを表示
-            if (!confirm('本当に削除しますか？')) {
-                // ユーザーが「キャンセル」を選んだ場合、フォーム送信を停止
-                event.preventDefault();
-            }
-        });
+        function confirmDelete() {
+            return confirm("本当に削除しますか？");
+        }
     </script>
 </body>
 </html>
