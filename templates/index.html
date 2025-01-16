@@ -3,36 +3,39 @@
 <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>index</title>
+        <title>サブスク管理アプリ</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 
 </head>
-<body>
-    <header>
-        <a href="" class="title">サブスク管理</a>
-        <ul>
-            <li><a href="add" class="menu-item">サブスクの登録</a></li>
-        </ul>
-    </header>
-    
-    <h1>TOP</h1>
 
-    <div id="no-subscription" class="hidden">
-        Not subscription.
-    </div>
+<header>
+    <a href="" class="title">サブスク管理</a>
+    <ul>
+        <li><a href="add" class="menu-item">サブスクの登録</a></li>
+    </ul>
 
     <div id="toggle-container">
         <button id="month-button" class="toggle-button">月</button>
         <button id="year-button" class="toggle-button">年</button>
     </div>
+</header>
 
-    <div id="graphs-container">
-        <div id="totalchart-container">
-            <canvas id="totalchart" width="600" height="600"></canvas>
+<body>
+
+    <div class="indexContainer">
+
+        <div id="no-subscription" class="hidden">
+            Not subscription.
         </div>
-        <div id="individual-container">
-            <canvas id="individualchart" width="600" height="600"></canvas>
+    
+        <div id="graphs-container">
+            <div id="totalchart-container">
+                <canvas id="totalchart" width="600" height="600"></canvas>
+            </div>
+            <div id="individual-container">
+                <canvas id="individualchart" width="600" height="600"></canvas>
+            </div>
         </div>
     </div>
     <script>
