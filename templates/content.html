@@ -20,11 +20,6 @@
     <div class="d-flex">
       <!-- Main -->
       <div class="p-3 flex-grow-1">
-        <div class="d-flex align-items-center border-bottom pb-2">
-          <a href="/" class="link-body-emphasis text-decoration-none w-100"
-            >Home</a
-          >
-        </div>
         <div class="ms-auto d-flex justify-content-end">
           <a
             type="button"
@@ -35,7 +30,7 @@
           </a>
           <a
             type="button"
-            class="btn btn-outline-primary me-2"
+            class="btn btn-outline-danger me-2"
             href="{{ url_for('delete.delete', id=content.id) }}"
           >
             削除
@@ -43,10 +38,14 @@
         </div>
         <div class="p-3">
           <h1>{{ content.name }}</h1>
-          <div class="p-3">
+          <div
+            class="p-3 alert alert-warning"
+            style="width: 200px"
+            role="alert"
+          >
             <div class="item-row">
               <span class="label">値段:</span>
-              <span class="value">{{ content.price }}</span>
+              <span class="value">{{ content.price }}円</span>
             </div>
             <div class="item-row">
               <span class="label">登録日:</span>
@@ -61,13 +60,18 @@
               >
             </div>
           </div>
+          <div>
+            <a type="button" class="btn me-2" href="{{ url_for('index') }}">
+              ←top
+            </a>
+          </div>
         </div>
       </div>
 
       <!-- Sidebar -->
       <div
         class="flex-shrink-0 p-3 border-start"
-        style="width: 160px; background-color: #f8f9fa"
+        style="width: 160px; height: 100vh; background-color: #f8f9fa"
       >
         <a
           class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom"
