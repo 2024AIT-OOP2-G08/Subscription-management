@@ -53,19 +53,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const centerX = chart.chartArea.left + width / 2;
       const centerY = chart.chartArea.top + height / 2;
 
+      // 画面幅に応じてフォントサイズを調整
+      const isMobile = window.innerWidth <= 768;
+
       ctx.save();
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
 
       //合計タイトル
-      ctx.font = "20px sans-serif";
+      ctx.font = isMobile ? "16px sans-serif" : "20px sans-serif";
       ctx.fillStyle = "black";
-      ctx.fillText("合計", centerX, centerY - 10);
+      ctx.fillText("合計", centerX, centerY - (isMobile ? 8 : 10));
 
       //合計値
-      ctx.font = "32px sans-serif";
+      ctx.font = isMobile ? "24px sans-serif" : "32px sans-serif";
       ctx.fillStyle = "#000";
-      ctx.fillText(`¥${sum.toLocaleString()}`, centerX, centerY + 20);
+      ctx.fillText(`¥${sum.toLocaleString()}`, centerX, centerY + (isMobile ? 16 : 20));
 
       ctx.restore();
     },
